@@ -1,109 +1,82 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import React from 'react';
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import tw from "twrnc";
+import { Link } from 'expo-router';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+const images = [
+  require('@/assets/images/nashatbk.jpeg'),
+  require('@/assets/images/smk1.jpg'),
+  require('@/assets/images/smk2.jpg'),
+  require('@/assets/images/smk3.jpg'),
+  require('@/assets/images/smk4.jpg'),
+];
 
-export default function TabTwoScreen() {
+const UserProfile = () => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
+    <View style={tw`flex-1 bg-gray-100`}>
+      {/* Header Section */}
+      <View style={tw`items-center bg-white py-5 rounded-b-3xl`}>
+        <Image
+          source={require('@/assets/images/smk.png')}
+          style={tw`w-50 h-32 mt-5`}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
-  );
-}
+        <Text style={tw`text-xl font-bold mt-2`}>SMK PESAT IT XPRO</Text>
+        <Text style={tw`text-gray-500 text-sm mt-1`}>UI/UX Designer | Daily UI</Text>
 
-const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-});
+        {/* Social Icons */}
+        <View style={tw`flex-row mt-3`}>
+          <AntDesign name="wechat" size={24} style={tw`text-blue-500 mx-2`} />
+          <AntDesign name="twitter" size={24} style={tw`text-pink-600 mx-2`} />
+          <AntDesign name="github" size={24} style={tw`text-blue-700 mx-2`} />
+          <AntDesign name="instagram" size={24} style={tw`text-blue-700 mx-2`} />
+        </View>
+
+        {/* Stats Section */}
+        <View style={tw`flex-row justify-around w-[90%] my-5`}>
+          <View style={tw`items-center`}>
+            <Text style={tw`text-lg font-bold`}>542</Text>
+            <Text style={tw`text-gray-500 text-sm`}>DKV</Text>
+          </View>
+          <View style={tw`items-center`}>
+            <Text style={tw`text-lg font-bold`}>98K</Text>
+            <Text style={tw`text-gray-500 text-sm`}>TKJ</Text>
+          </View>
+          <View style={tw`items-center`}>
+            <Text style={tw`text-lg font-bold`}>100K</Text>
+            <Text style={tw`text-gray-500 text-sm`}>RPL</Text>
+          </View>
+        </View>
+
+        {/* Action Buttons */}
+        <View style={tw`flex-row mt-5`}>
+          <TouchableOpacity style={tw`bg-gray-300 py-2 px-4 rounded-lg mr-3`}>
+            <Link href={"/project/karya"}>
+              <Text style={tw`text-black font-bold`}>Karyaa Terbaik</Text>
+            </Link>
+          </TouchableOpacity>
+          <TouchableOpacity style={tw`bg-blue-500 py-2 px-4 rounded-lg`}>
+          <Link href={"/siswa/murid"}>
+            <Text style={tw`text-white font-bold`}>Siswa XI RPL 1</Text>
+          </Link>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Gallery Section */}
+      <ScrollView>
+        <View style={tw`flex-row flex-wrap justify-start p-4`}>
+          {images.map((img, index) => (
+            <Image
+              key={index}
+              source={img}
+              style={tw`w-24 h-24 m-2 rounded-lg`}
+            />
+          ))}
+        </View>
+      </ScrollView>
+    </View>
+  );
+};
+
+export default UserProfile;
